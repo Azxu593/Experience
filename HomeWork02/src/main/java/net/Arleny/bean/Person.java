@@ -55,4 +55,8 @@ public class Person {
                 ", addressList=" + addressList +
                 '}';
     }
+
+    public static void main(String[] args) {
+        System.out.println("master");
+    }
 }
