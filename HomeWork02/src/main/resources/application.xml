@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="net.Arleny.bean"></context:component-scan>
+    <!--setter方法注入-->
+    <!--<bean id="address01" class="net.Arleny.bean.Address">
+        <property name="sheng" value="陕西省"/>
+        <property name="shi" value="宝鸡市"/>
+        <property name="xian" value="渭滨区"/>
+    </bean>
+
+    <bean id="stu01" class="net.Arleny.bean.Student">
+        <property name="name" value="张三"/>
+        <property name="age" value="11"/>
+        <property name="address" ref="address01"/>
+    </bean>-->
+
+    <!--构造器注入-->
+    <!--<bean id="address" class="net.Arleny.bean.Address">
+        <constructor-arg name="sheng" value="陕西省"></constructor-arg>
+        <constructor-arg name="shi" value="宝鸡市"></constructor-arg>
+        <constructor-arg name="xian" value="渭滨区"></constructor-arg>
+    </bean>
+
+    <bean id="stu01" class="net.Arleny.bean.Student">
+        <constructor-arg name="name" value="张三"/>
+        <constructor-arg name="address" ref="address"/>
+        <constructor-arg name="age" value="11"/>
+    </bean>-->
+
+    <!--使用P名称空间注入-->
+
+    <bean name="address" class="net.Arleny.bean.Address" p:sheng="陕西省" p:shi="宝鸡市" p:xian="渭滨区"/>
+
+    <bean name="stu01" class="net.Arleny.bean.Student" p:name="张三" p:address-ref="address" p:age="11"/>
+
+    <bean name="stu02" class="net.Arleny.bean.Student" p:name="李四" p:address-ref="address" p:age="11"/>
+    <!--复杂类型注入-->
+    <bean name="person" class="net.Arleny.bean.Person" scope="singleton">
+        <property name="name" value="张三"></property>
+        <property name="addresses">
+            <list>
+                <ref bean="address"/>
+            </list>
+        </property>
+
+        <property name="map">
+            <map>
+                <entry key="学生1" value-ref="stu01" ></entry>
+                <entry key="学生2" value-ref="stu02" ></entry>
+            </map>
+        </property>
+
+        <property name="set">
+            <set>
+                <value>1</value>
+                <value>1</value>
+                <value>3</value>
+                <value>2</value>
+            </set>
+        </property>
+    </bean>
+
+</beans>

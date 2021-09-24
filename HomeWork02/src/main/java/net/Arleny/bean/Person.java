@@ -1,64 +1,66 @@
 package net.Arleny.bean;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-/**
- * @author Administrator
- * @version 1.0
- * @description : TODO
- * @date 9/24/2021 1:01 PM
- */
 public class Person {
-
     private String name;
-    private Integer age;
-    private List<Address> addressList;
 
-    public Person(String name, Integer age, List<Address> addressList) {
-        this.name = name;
-        this.age = age;
-        this.addressList = addressList;
+    private List<Address> addresses;
+
+    private Map<String,List<Student>> map;
+
+    private Set<String> set;
+
+    public Set<String> getSet() {
+        return set;
+    }
+
+    public void setSet(Set<String> set) {
+        this.set = set;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public List<Address> getAddressList() {
-        return addressList;
-    }
-
-    public void setAddressList(List<Address> addressList) {
-        this.addressList = addressList;
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", addresses=" + addresses +
+                ", map=" + map +
+                ", set=" + set +
+                '}';
     }
 
     public Person() {
     }
 
-    @Override
-    public String toString() {
-        return "Person{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", addressList=" + addressList +
-                '}';
+    public Person(String name, List<Address> addresses, Map<String, List<Student>> map) {
+        this.name = name;
+        this.addresses = addresses;
+        this.map = map;
     }
 
-    public static void main(String[] args) {
-        System.out.println("master");
-        System.out.println("hebing master");
-        System.out.println("hebing hot-fix");
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
+    }
+
+    public Map<String, List<Student>> getMap() {
+        return map;
+    }
+
+    public void setMap(Map<String, List<Student>> map) {
+        this.map = map;
     }
 }
